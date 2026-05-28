@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CashEarn Demo</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding-bottom:100px;
+}
+
+.header{
+background:linear-gradient(135deg,#00c853,#00e676);
+padding:20px;
+border-radius:0 0 25px 25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.profile img{
+width:50px;
+height:50px;
+border-radius:50%;
+border:3px solid white;
+}
+
+.balance-box{
+margin-top:20px;
+background:white;
+color:#111;
+padding:20px;
+border-radius:20px;
+text-align:center;
+}
+
+.balance-box h1{
+font-size:35px;
+margin-top:10px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 10px rgba(0,0,0,0.3);
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:60px;
+margin-bottom:10px;
+}
+
+.card h3{
+margin-bottom:5px;
+}
+
+.spin-box{
+margin:20px;
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+text-align:center;
+}
+
+.spin-btn{
+margin-top:15px;
+padding:12px 30px;
+border:none;
+border-radius:50px;
+background:linear-gradient(135deg,#00c853,#00e676);
+color:white;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.history{
+margin:20px;
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+}
+
+.history ul{
+margin-top:10px;
+list-style:none;
+}
+
+.history li{
+padding:10px;
+background:#334155;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111827;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+}
+
+.bottom-nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+text-align:center;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:black;
+padding:25px;
+border-radius:20px;
+display:none;
+text-align:center;
+z-index:1000;
+width:80%;
+max-width:300px;
+}
+
+.popup button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:#00c853;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="top">
+<div class="profile">
+<img src="https://i.ibb.co/F3Yj0xM/user.png">
+<div>
+<h3>Abhishek</h3>
+<p>VIP User</p>
+</div>
+</div>
+
+<div>
+<h3>₹ 250</h3>
+</div>
+</div>
+
+<div class="balance-box">
+<p>Total Balance</p>
+<h1 id="balance">250</h1>
+<p>Coins</p>
+</div>
+
+</div>
+
+<div class="menu">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+<h3>Daily Bonus</h3>
+<p>Claim Everyday</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
+<h3>Watch Ads</h3>
+<p>Earn Fast</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/595/595067.png">
+<h3>Refer & Earn</h3>
+<p>Invite Friends</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
+<h3>Withdraw</h3>
+<p>UPI Payment</p>
+</div>
+
+</div>
+
+<div class="spin-box">
+<h2>Lucky Spin</h2>
+<p>Spin & Win Coins</p>
+
+<button class="spin-btn" onclick="spin()">SPIN NOW</button>
+</div>
+
+<div class="history">
+<h2>Recent Earnings</h2>
+
+<ul id="historyList">
+<li>+20 Coins from Ads</li>
+<li>+50 Coins from Refer</li>
+<li>+10 Coins Daily Bonus</li>
+</ul>
+</div>
+
+<div class="bottom-nav">
+<a href="#">🏠<br>Home</a>
+<a href="#">💰<br>Wallet</a>
+<a href="#">🎁<br>Reward</a>
+<a href="#">👤<br>Profile</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+<h2 id="winText">You Won 10 Coins</h2>
+<button onclick="closePopup()">OK</button>
+</div>
+
+<script>
+
+let balance = 250;
+
+function spin(){
+
+let rewards = [5,10,15,20,25,50];
+let reward = rewards[Math.floor(Math.random()*rewards.length)];
+
+balance += reward;
+
+document.getElementById("balance").innerText = balance;
+
+document.getElementById("winText").innerText =
+"You Won " + reward + " Coins";
+
+document.getElementById("popup").style.display = "block";
+document.getElementById("overlay").style.display = "block";
+
+let li = document.createElement("li");
+li.innerText = "+" + reward + " Coins from Spin";
+
+document.getElementById("historyList").prepend(li);
+
+}
+
+function closePopup(){
+document.getElementById("popup").style.display = "none";
+document.getElementById("overlay").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
