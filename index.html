@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>InvestPro</title>
+<title>InvestPro - Earn Daily</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -46,7 +46,6 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
 .pd{display:flex;justify-content:space-between;font-size:.76rem;} .di{display:flex;flex-direction:column;}
 .di span:first-child{color:var(--m);margin-bottom:2px;font-size:.68rem;} .di span:last-child{font-weight:700;}
 .bb{background:linear-gradient(90deg,var(--p),var(--s));color:#fff;border:none;padding:11px;border-radius:10px;font-weight:700;cursor:pointer;width:100%;font-size:.87rem;font-family:Poppins,sans-serif;}
-.prg{background:var(--b);border-radius:10px;height:6px;overflow:hidden;} .prf{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--p),var(--s));}
 .bn{position:fixed;bottom:0;width:100%;max-width:480px;background:var(--card);display:flex;justify-content:space-around;padding:11px 0 7px;box-shadow:0 -4px 18px rgba(0,0,0,.08);border-top-left-radius:20px;border-top-right-radius:20px;z-index:100;}
 .ni{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--m);cursor:pointer;font-size:.67rem;font-weight:600;transition:.25s;padding:4px 10px;}
 .ni i{font-size:1.08rem;transition:.25s;} .ni.on{color:var(--p);}
@@ -55,11 +54,6 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
 .sr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 20px;margin-bottom:20px;}
 .sc{background:var(--card);border-radius:14px;padding:13px 8px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.05);}
 .sc .v{font-size:.98rem;font-weight:800;color:var(--p);font-family:Nunito,sans-serif;} .sc .l{font-size:.62rem;color:var(--m);margin-top:3px;}
-.tl{padding:0 20px;display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
-.ti{background:var(--card);border-radius:13px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.05);}
-.tt{display:flex;align-items:center;gap:12px;} .tic{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.93rem;flex-shrink:0;}
-.tic.g{background:#d1fae5;color:var(--a);} .tic.b{background:#dbeafe;color:var(--s);} .tic.r{background:#fee2e2;color:var(--d);}
-.td2{font-size:.81rem;font-weight:600;} .tdt{font-size:.67rem;color:var(--m);} .ta{font-weight:800;font-size:.9rem;font-family:Nunito,sans-serif;} .ta.cr{color:var(--a);} .ta.db{color:var(--d);}
 .fs{padding:0 20px;margin-bottom:18px;} .fc{background:var(--card);border-radius:18px;padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.07);}
 .fg2{margin-bottom:15px;} .fg2 label{display:block;font-size:.76rem;font-weight:600;color:var(--m);margin-bottom:6px;}
 .fg2 input,.fg2 select{width:100%;padding:12px 14px;border:1.5px solid var(--b);border-radius:11px;font-size:.86rem;font-family:Poppins,sans-serif;outline:none;background:#fafafa;}
@@ -69,34 +63,21 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
 .ib{background:var(--bg);border-radius:12px;padding:13px;margin:12px 0;} .ir{display:flex;justify-content:space-between;padding:5px 0;font-size:.81rem;} .ir span:first-child{color:var(--m);} .ir span:last-child{font-weight:700;}
 .ug{background:var(--card);border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.07);}
 .ug h3{font-size:.98rem;font-weight:800;color:var(--p);margin-bottom:4px;} .ug p{font-size:.76rem;color:var(--m);margin-bottom:12px;}
-.ads{font-size:1.8rem;font-weight:800;color:var(--p);font-family:Nunito,sans-serif;margin:4px 0;} .tmb{display:inline-block;background:#fef3c7;color:#92400e;border-radius:20px;padding:4px 12px;font-size:.72rem;font-weight:700;margin-bottom:14px;}
-.qrw{width:180px;height:180px;margin:0 auto 14px;background:#fff;border:3px solid var(--b);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:8px;} .qrs{width:100%;height:100%;}
+.ads{font-size:1.8rem;font-weight:800;color:var(--p);font-family:Nunito,sans-serif;margin:4px 0;} 
 .ur{background:#f0f4ff;border-radius:12px;padding:11px 14px;margin-bottom:13px;display:flex;justify-content:space-between;align-items:center;} .ur span{font-size:.85rem;font-weight:700;color:var(--p);}
 .cb{background:var(--p);color:#fff;border:none;border-radius:8px;padding:6px 11px;font-size:.72rem;font-weight:700;cursor:pointer;}
 .ua{display:flex;gap:14px;justify-content:center;margin:8px 0 14px;} .uap{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
 .uap .ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--b);} .uap span{font-size:.61rem;font-weight:600;color:var(--m);}
 .cpd{width:100%;padding:13px;border:none;border-radius:12px;background:var(--a);color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif;}
-.sd2{display:flex;justify-content:center;gap:8px;margin-bottom:16px;} .dot{width:8px;height:8px;border-radius:50%;background:var(--b);} .dot.dn{background:var(--a);} .dot.ac{background:var(--p);width:22px;border-radius:4px;}
 .si{width:66px;height:66px;border-radius:50%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--a);margin:0 auto 14px;animation:pop .4s ease;}
 @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
-.ih{margin:0 20px 20px;background:linear-gradient(135deg,var(--p),var(--s));border-radius:20px;padding:24px 20px;color:#fff;text-align:center;}
-.rb{background:rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;margin:13px 0;display:flex;justify-content:space-between;align-items:center;}
-.rc{font-size:1.2rem;font-weight:800;letter-spacing:3px;} .rcb{background:#fff;color:var(--p);border:none;border-radius:8px;padding:6px 12px;font-weight:700;font-size:.75rem;cursor:pointer;}
-.is2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0 20px;margin-bottom:20px;} .isc{background:var(--card);border-radius:14px;padding:15px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.05);}
-.sbs{padding:0 20px;display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
-.sb{padding:13px;border-radius:12px;border:none;font-size:.87rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;font-family:Poppins,sans-serif;}
-.sb.wa{background:#25D366;color:#fff;} .sb.tg{background:#0088cc;color:#fff;} .sb.cp{background:var(--p);color:#fff;}
 .phr{background:var(--p);color:#fff;padding:30px 20px 50px;text-align:center;border-bottom-left-radius:30px;border-bottom-right-radius:30px;}
 .av{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 12px;border:3px solid rgba(255,255,255,.35);}
 .pm{padding:0 20px;margin-top:-20px;} .mc{background:var(--card);border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.08);overflow:hidden;margin-bottom:14px;}
 .mi{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--b);cursor:pointer;} .mi:last-child{border-bottom:none;}
 .mic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.92rem;flex-shrink:0;}
-.mic.bl{background:#dbeafe;color:var(--s);} .mic.gr{background:#d1fae5;color:var(--a);} .mic.ye{background:#fef3c7;color:var(--a2);} .mic.re{background:#fee2e2;color:var(--d);} .mic.pu{background:#ede9fe;color:#8b5cf6;} .mic.gy{background:#f3f4f6;color:var(--m);}
-.mt2{flex:1;} .mt2 span{display:block;font-size:.84rem;font-weight:600;} .mt2 small{color:var(--m);font-size:.68rem;} .marr{color:var(--m);font-size:.76rem;}
-.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;justify-content:center;align-items:flex-end;} .mov.on{display:flex;}
-.mb{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:24px 20px 40px;animation:su .3s ease;max-height:90vh;overflow-y:auto;}
-@keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.mtt{font-size:1rem;font-weight:800;margin-bottom:16px;color:var(--p);text-align:center;} .mcl{float:right;cursor:pointer;color:var(--m);font-size:1.1rem;background:none;border:none;margin-top:-2px;}
+.mic.bl{background:#dbeafe;color:var(--s);} .mic.gr{background:#d1fae5;color:var(--a);} .mic.ye{background:#fef3c7;color:var(--a2);} .mic.re{background:#fee2e2;color:var(--d);} 
+.mt2{flex:1;} .mt2 span{display:block;font-size:.84rem;font-weight:600;} .mt2 small{color:var(--m);font-size:.68rem;} 
 .tst{position:fixed;bottom:95px;left:50%;transform:translateX(-50%) translateY(20px);background:#1f2937;color:#fff;padding:10px 22px;border-radius:30px;font-size:.81rem;font-weight:600;opacity:0;transition:.3s;z-index:400;pointer-events:none;white-space:nowrap;} .tst.on{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
@@ -143,7 +124,7 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
   <div class="pg on" id="pg-home">
     <header class="th">
       <div class="ui"><p>Good Morning 🌸</p><h2 id="hname">User</h2></div>
-      <div class="nb"><i class="fa-solid fa-bell"></i><span class="bdg">2</span></div>
+      <div class="nb"><i class="fa-solid fa-bell"></i></div>
     </header>
     <div class="bc">
       <div class="bl">Total Earning Balance (Withdrawable)</div>
@@ -175,12 +156,12 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
       <div class="pc">
         <div class="ph"><div class="pn"><i class="fa-solid fa-crown" style="color:#f59e0b"></i> VIP Plan A</div><div class="pp">₹650</div></div>
         <div class="pd"><div class="di"><span>Daily Income</span><span style="color:var(--a)">₹1,765</span></div><div class="di"><span>Total Income</span><span>₹7,060</span></div><div class="di"><span>Duration</span><span>4 Days</span></div></div>
-        <button class="bb" onclick="buyPlan(650,4,1765,7060,'VIP Plan A', true)">Buy Now</button>
+        <button class="bb" onclick="toast('Adding balance required')">Buy Now</button>
       </div>
       <div class="pc" style="border-left-color:#8b5cf6">
         <div class="ph"><div class="pn"><i class="fa-solid fa-gem" style="color:#8b5cf6"></i> Mega Plan B</div><div class="pp">₹750</div></div>
         <div class="pd"><div class="di"><span>Daily Income</span><span style="color:var(--a)">₹2,938</span></div><div class="di"><span>Total Income</span><span>₹8,814</span></div><div class="di"><span>Duration</span><span>3 Days</span></div></div>
-        <button class="bb" style="background:linear-gradient(90deg,#5b21b6,#8b5cf6)" onclick="buyPlan(750,3,2938,8814,'Mega Plan B', true)">Buy Now</button>
+        <button class="bb" style="background:linear-gradient(90deg,#5b21b6,#8b5cf6)" onclick="toast('Adding balance required')">Buy Now</button>
       </div>
     </div>
   </div>
@@ -207,7 +188,7 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
       </div></div>
     </div>
     
-    <!-- Step 2: UPI Gateway (Dynamic Admin UPI Connected) -->
+    <!-- Step 2: UPI Gateway -->
     <div id="s2" style="display:none">
       <div class="fs"><div class="ug">
         <h3>Complete Your Payment</h3>
@@ -224,7 +205,6 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
           <div class="uap" onclick="openUPIApp('paytm')"><div class="ic" style="background:#00baf2;"><i class="fa-solid fa-wallet" style="color:#fff;"></i></div><span>Paytm</span></div>
         </div>
 
-        <!-- NEW: UTR INPUT FIELD FOR DATABASE -->
         <div style="text-align:left; margin-top:15px; margin-bottom:10px;">
           <label style="font-size:0.75rem;font-weight:700;color:var(--t);">Enter 12-Digit UTR/Ref No. after payment:</label>
           <input type="text" id="utr_input" placeholder="e.g. 312345678901" style="width:100%;padding:12px;border:1.5px solid var(--b);border-radius:11px;font-size:0.86rem;font-family:Poppins,sans-serif;outline:none;background:#fafafa;margin-top:6px;">
@@ -297,8 +277,6 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
   </nav>
 </div>
 
-<!-- MODAL -->
-<div class="mov" id="mod"><div class="mb"><button class="mcl" onclick="closeMod()"><i class="fa-solid fa-xmark"></i></button><div class="mtt" id="mtt"></div><div id="mbd"></div></div></div>
 <!-- TOAST -->
 <div class="tst" id="tst"></div>
 
@@ -307,28 +285,34 @@ body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-cont
 // CORE APP VARIABLES
 // ==========================================
 var APP = { user: null, depositBal: 0, earningBal: 0 };
-var ADMIN_UPI_ID = "investpro@ybl"; // Fallback, will update via API
+var ADMIN_UPI_ID = "investpro@ybl"; // Fallback UPI
 var phist = ['pg-home'], mainPgs = ['pg-home','pg-rc','pg-prof'];
 
-function toast(m){ var t=document.getElementById('tst'); t.textContent=m; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');}, 2500); }
-function openMod(ti,bd){ document.getElementById('mtt').textContent=ti; document.getElementById('mbd').innerHTML=bd; document.getElementById('mod').classList.add('on'); }
-function closeMod(){ document.getElementById('mod').classList.remove('on'); }
+function toast(m){ var t=document.getElementById('tst'); t.textContent=m; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');}, 3000); }
 function fmtI(n){ return parseInt(n).toLocaleString('en-IN'); }
 function swA(i){ document.getElementById('t1').classList.toggle('on',i===0); document.getElementById('t2').classList.toggle('on',i===1); document.getElementById('fl').style.display=i===0?'block':'none'; document.getElementById('fs').style.display=i===1?'block':'none'; }
 function tpw(btn,id){ var inp=document.getElementById(id); if(inp.type==='password'){inp.type='text';btn.innerHTML='<i class="fa-solid fa-eye-slash"></i>';}else{inp.type='password';btn.innerHTML='<i class="fa-solid fa-eye"></i>';} }
 
 // ==========================================
-// API FETCH CONNECTIONS (SIGNUP & LOGIN)
+// API FETCH CONNECTIONS (ERROR CAUGHT)
 // ==========================================
 function doSignup(){
     var n=document.getElementById('sn').value.trim(), m=document.getElementById('sm').value.trim(), p=document.getElementById('sp').value;
     if(!n || m.length<10 || p.length<6){ toast('Please fill all details properly!'); return; }
     
     var fd = new FormData(); fd.append('name', n); fd.append('mobile', m); fd.append('password', p);
-    fetch('signup.php', { method: 'POST', body: fd }).then(r=>r.json()).then(res=>{
-        toast(res.message);
-        if(res.status === 'success') enterApp();
-    }).catch(e => toast("Error connecting to server"));
+    
+    fetch('signup.php', { method: 'POST', body: fd })
+    .then(r => r.text())
+    .then(text => {
+        try {
+            var res = JSON.parse(text);
+            toast(res.message);
+            if(res.status === 'success') enterApp();
+        } catch(e) {
+            alert("Error in Signup Server: " + text);
+        }
+    }).catch(e => toast("Network error! Check internet."));
 }
 
 function doLogin(){
@@ -336,10 +320,18 @@ function doLogin(){
     if(!m || !p){ toast('Enter mobile and password'); return; }
     
     var fd = new FormData(); fd.append('mobile', m); fd.append('password', p);
-    fetch('login.php', { method: 'POST', body: fd }).then(r=>r.json()).then(res=>{
-        toast(res.message);
-        if(res.status === 'success') enterApp();
-    }).catch(e => toast("Error connecting to server"));
+    
+    fetch('login.php', { method: 'POST', body: fd })
+    .then(r => r.text())
+    .then(text => {
+        try {
+            var res = JSON.parse(text);
+            toast(res.message);
+            if(res.status === 'success') enterApp();
+        } catch(e) {
+            alert("Error in Login Server: " + text);
+        }
+    }).catch(e => toast("Network error! Check internet."));
 }
 
 function confLo(){ window.location.reload(); }
@@ -348,31 +340,37 @@ function confLo(){ window.location.reload(); }
 // FETCH USER DATA FROM DATABASE
 // ==========================================
 function enterApp(){
-    fetch('get_data.php').then(r=>r.json()).then(res=>{
-        if(res.status === 'success') {
-            APP.user = res.user;
-            APP.depositBal = parseFloat(res.user.deposit_balance);
-            APP.earningBal = parseFloat(res.user.earning_balance);
-            ADMIN_UPI_ID = res.upi; // Set dynamic Admin UPI
+    fetch('get_data.php')
+    .then(r => r.text())
+    .then(text => {
+        try {
+            var res = JSON.parse(text);
+            if(res.status === 'success') {
+                APP.user = res.user;
+                APP.depositBal = parseFloat(res.user.deposit_balance);
+                APP.earningBal = parseFloat(res.user.earning_balance);
+                ADMIN_UPI_ID = res.upi; 
 
-            document.getElementById('asc').classList.add('h');
-            document.getElementById('mn').classList.add('on');
-            
-            document.getElementById('hname').textContent = res.user.full_name;
-            document.getElementById('pname').textContent = res.user.full_name;
-            document.getElementById('pmob').textContent = res.user.mobile;
-            document.getElementById('upi-display').textContent = ADMIN_UPI_ID;
-            
-            refreshBal();
+                document.getElementById('asc').classList.add('h');
+                document.getElementById('mn').classList.add('on');
+                
+                document.getElementById('hname').textContent = res.user.full_name;
+                document.getElementById('pname').textContent = res.user.full_name;
+                document.getElementById('pmob').textContent = res.user.mobile;
+                document.getElementById('upi-display').textContent = ADMIN_UPI_ID;
+                
+                refreshBal();
+            }
+        } catch(e) {
+            alert("Error Fetching Data: " + text);
         }
-    });
+    }).catch(e => toast("Network error! Check internet."));
 }
 
 function refreshBal(){
     document.getElementById('bal-display').textContent = '₹ ' + APP.earningBal.toFixed(2);
     document.getElementById('dep-display').textContent = '₹ ' + APP.depositBal.toFixed(2);
     document.getElementById('earn-display').textContent = '₹ ' + APP.earningBal.toFixed(2);
-    
     if(document.getElementById('wd-bal')) document.getElementById('wd-bal').textContent = '₹' + APP.earningBal.toFixed(2);
 }
 
@@ -428,26 +426,33 @@ function openUPIApp(app){
     setTimeout(function(){toast('If app did not open, pay manually via UPI ID.');},2000);
 }
 
-// SEND UTR TO DATABASE (recharge.php)
 function submitRechargeRequest(){
     var amt = parseInt(document.getElementById('ramt').value)||0;
     var utr = document.getElementById('utr_input').value.trim();
     if(utr.length < 12) { toast("Please enter valid 12-digit UTR/Ref No"); return; }
     
     var fd = new FormData(); fd.append('amount', amt); fd.append('utr', utr);
-    fetch('recharge.php', {method: 'POST', body: fd}).then(r=>r.json()).then(res=>{
-        toast(res.message);
-        if(res.status === 'success') {
-            document.getElementById('s2').style.display='none';
-            document.getElementById('s3').style.display='block';
+    
+    fetch('recharge.php', {method: 'POST', body: fd})
+    .then(r => r.text())
+    .then(text => {
+        try {
+            var res = JSON.parse(text);
+            toast(res.message);
+            if(res.status === 'success') {
+                document.getElementById('s2').style.display='none';
+                document.getElementById('s3').style.display='block';
+            }
+        } catch(e) {
+            alert("Error in Recharge Server: " + text);
         }
-    });
+    }).catch(e => toast("Network error! Check internet."));
 }
 function rcReset(){ document.getElementById('s1').style.display='block'; document.getElementById('s2').style.display='none'; document.getElementById('s3').style.display='none'; document.getElementById('ramt').value=''; go('pg-home'); }
 function rcBack(){ document.getElementById('s1').style.display='block'; document.getElementById('s2').style.display='none'; document.getElementById('s3').style.display='none'; goBack(); }
 
 // ==========================================
-// WITHDRAW SYSTEM (withdraw.php)
+// WITHDRAW SYSTEM
 // ==========================================
 function attemptWd(){ go('pg-wd'); }
 function togWd(){
@@ -471,16 +476,24 @@ function doWd(){
     }
     
     var fd = new FormData(); fd.append('amount', amt); fd.append('method', m); fd.append('details', dest);
-    fetch('withdraw.php', {method: 'POST', body: fd}).then(r=>r.json()).then(res=>{
-        if(res.status === 'success') {
-            toast(res.message);
-            APP.earningBal -= amt; 
-            refreshBal();
-            setTimeout(function(){ go('pg-home'); }, 2000);
-        } else {
-            toast(res.message);
+    
+    fetch('withdraw.php', {method: 'POST', body: fd})
+    .then(r => r.text())
+    .then(text => {
+        try {
+            var res = JSON.parse(text);
+            if(res.status === 'success') {
+                toast(res.message);
+                APP.earningBal -= amt; 
+                refreshBal();
+                setTimeout(function(){ go('pg-home'); }, 2000);
+            } else {
+                toast(res.message);
+            }
+        } catch(e) {
+            alert("Error in Withdraw Server: " + text);
         }
-    });
+    }).catch(e => toast("Network error! Check internet."));
 }
 </script>
 </body>
