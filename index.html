@@ -1,306 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CashEarn Demo</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>InvestPro</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0f172a;
-color:white;
-padding-bottom:100px;
-}
-
-.header{
-background:linear-gradient(135deg,#00c853,#00e676);
-padding:20px;
-border-radius:0 0 25px 25px;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.profile{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.profile img{
-width:50px;
-height:50px;
-border-radius:50%;
-border:3px solid white;
-}
-
-.balance-box{
-margin-top:20px;
-background:white;
-color:#111;
-padding:20px;
-border-radius:20px;
-text-align:center;
-}
-
-.balance-box h1{
-font-size:35px;
-margin-top:10px;
-}
-
-.menu{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-padding:20px;
-}
-
-.card{
-background:#1e293b;
-padding:20px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 5px 10px rgba(0,0,0,0.3);
-transition:0.3s;
-cursor:pointer;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card img{
-width:60px;
-margin-bottom:10px;
-}
-
-.card h3{
-margin-bottom:5px;
-}
-
-.spin-box{
-margin:20px;
-background:#1e293b;
-padding:20px;
-border-radius:20px;
-text-align:center;
-}
-
-.spin-btn{
-margin-top:15px;
-padding:12px 30px;
-border:none;
-border-radius:50px;
-background:linear-gradient(135deg,#00c853,#00e676);
-color:white;
-font-size:18px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.history{
-margin:20px;
-background:#1e293b;
-padding:20px;
-border-radius:20px;
-}
-
-.history ul{
-margin-top:10px;
-list-style:none;
-}
-
-.history li{
-padding:10px;
-background:#334155;
-margin-bottom:10px;
-border-radius:10px;
-}
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#111827;
-display:flex;
-justify-content:space-around;
-padding:15px 0;
-}
-
-.bottom-nav a{
-color:white;
-text-decoration:none;
-font-size:14px;
-text-align:center;
-}
-
-.popup{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-color:black;
-padding:25px;
-border-radius:20px;
-display:none;
-text-align:center;
-z-index:1000;
-width:80%;
-max-width:300px;
-}
-
-.popup button{
-margin-top:15px;
-padding:10px 20px;
-border:none;
-background:#00c853;
-color:white;
-border-radius:10px;
-cursor:pointer;
-}
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
-}
+:root{--p:#1e3a8a;--s:#3b82f6;--a:#10b981;--a2:#f59e0b;--d:#ef4444;--bg:#f0f4ff;--card:#fff;--t:#1f2937;--m:#6b7280;--b:#e5e7eb;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{background:#c7d7ff;font-family:Poppins,sans-serif;display:flex;justify-content:center;min-height:100vh;}
+.app{width:100%;max-width:480px;background:var(--bg);min-height:100vh;position:relative;box-shadow:0 0 40px rgba(30,58,138,.18);overflow-x:hidden;}
+#asc{min-height:100vh;} #asc.h{display:none;} #mn{display:none;padding-bottom:80px;} #mn.on{display:block;}
+.ahero{background:linear-gradient(160deg,var(--p),var(--s));padding:55px 30px 45px;color:#fff;text-align:center;border-bottom-left-radius:40px;border-bottom-right-radius:40px;}
+.ahero h1{font-size:1.7rem;font-weight:800;} .ahero p{font-size:.8rem;opacity:.82;margin-top:6px;}
+.atbs{display:flex;margin:24px 20px 0;background:#e8eeff;border-radius:14px;padding:4px;}
+.atb{flex:1;padding:10px;text-align:center;border-radius:11px;font-size:.87rem;font-weight:700;cursor:pointer;transition:.2s;color:var(--m);}
+.atb.on{background:var(--p);color:#fff;box-shadow:0 3px 10px rgba(30,58,138,.25);}
+.afm{padding:20px;} .acd{background:var(--card);border-radius:20px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,.08);}
+.fg{margin-bottom:15px;} .fg label{display:block;font-size:.76rem;font-weight:600;color:var(--m);margin-bottom:6px;}
+.fw{position:relative;} .fw .fi{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--m);font-size:.87rem;pointer-events:none;}
+.fw input{width:100%;padding:12px 40px 12px 38px;border:1.5px solid var(--b);border-radius:12px;font-size:.87rem;font-family:Poppins,sans-serif;outline:none;background:#fafafa;transition:.2s;}
+.fw input:focus{border-color:var(--s);background:#fff;}
+.ey{position:absolute;right:13px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--m);font-size:.87rem;background:none;border:none;}
+.ba{width:100%;padding:14px;border:none;border-radius:13px;background:linear-gradient(90deg,var(--p),var(--s));color:#fff;font-size:.97rem;font-weight:700;cursor:pointer;margin-top:6px;font-family:Poppins,sans-serif;}
+.ba:active{transform:scale(.98);} .afo{text-align:center;font-size:.78rem;color:var(--m);margin-top:14px;}
+.afo span{color:var(--s);font-weight:700;cursor:pointer;} .fgl{text-align:right;font-size:.73rem;color:var(--s);font-weight:600;cursor:pointer;margin:-8px 0 14px;}
+.pg{display:none;animation:fi .28s ease;} .pg.on{display:block;} @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.th{display:flex;justify-content:space-between;align-items:center;padding:20px;background:var(--p);color:#fff;border-bottom-left-radius:25px;border-bottom-right-radius:25px;}
+.ui h2{font-size:1.1rem;font-weight:700;} .ui p{font-size:.74rem;opacity:.8;}
+.nb{position:relative;font-size:1.2rem;cursor:pointer;} .bdg{position:absolute;top:-5px;right:-5px;background:red;color:#fff;border-radius:50%;padding:2px 5px;font-size:.55rem;font-weight:700;}
+.bc{background:linear-gradient(135deg,var(--p),var(--s));margin:-20px 20px 20px;padding:22px 18px;border-radius:20px;color:#fff;box-shadow:0 10px 25px rgba(59,130,246,.35);position:relative;z-index:10;}
+.bl{font-size:.8rem;opacity:.88;} .bam{font-size:2rem;font-weight:800;margin:8px 0;font-family:Nunito,sans-serif;}
+.bch{font-size:.72rem;opacity:.8;} .cas{display:flex;gap:12px;margin-top:14px;}
+.ca{flex:1;padding:10px;border:none;border-radius:10px;font-weight:600;font-size:.81rem;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:7px;font-family:Poppins,sans-serif;}
+.ca.dp{background:#fff;color:var(--p);} .ca.wt{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.4);}
+.ql{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 20px;margin-bottom:22px;}
+.qi{display:flex;flex-direction:column;align-items:center;gap:7px;background:var(--card);padding:13px 5px;border-radius:14px;box-shadow:0 3px 8px rgba(0,0,0,.06);cursor:pointer;font-size:.68rem;font-weight:600;color:var(--t);text-align:center;}
+.qi i{font-size:1.3rem;color:var(--s);} .st{padding:0 20px;margin-bottom:13px;font-size:.97rem;font-weight:700;color:var(--p);display:flex;justify-content:space-between;align-items:center;}
+.st a{font-size:.75rem;color:var(--s);font-weight:600;cursor:pointer;}
+.pw{padding:0 20px;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;}
+.pc{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:11px;border-left:4px solid var(--s);}
+.ph{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--b);padding-bottom:10px;}
+.pn{font-weight:700;font-size:.91rem;display:flex;align-items:center;gap:6px;} .pp{color:var(--a);font-weight:800;font-size:1.08rem;font-family:Nunito,sans-serif;}
+.pd{display:flex;justify-content:space-between;font-size:.76rem;} .di{display:flex;flex-direction:column;}
+.di span:first-child{color:var(--m);margin-bottom:2px;font-size:.68rem;} .di span:last-child{font-weight:700;}
+.bb{background:linear-gradient(90deg,var(--p),var(--s));color:#fff;border:none;padding:11px;border-radius:10px;font-weight:700;cursor:pointer;width:100%;font-size:.87rem;font-family:Poppins,sans-serif;}
+.prg{background:var(--b);border-radius:10px;height:6px;overflow:hidden;} .prf{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--p),var(--s));}
+.bn{position:fixed;bottom:0;width:100%;max-width:480px;background:var(--card);display:flex;justify-content:space-around;padding:11px 0 7px;box-shadow:0 -4px 18px rgba(0,0,0,.08);border-top-left-radius:20px;border-top-right-radius:20px;z-index:100;}
+.ni{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--m);cursor:pointer;font-size:.67rem;font-weight:600;transition:.25s;padding:4px 10px;}
+.ni i{font-size:1.08rem;transition:.25s;} .ni.on{color:var(--p);}
+.sh{display:flex;align-items:center;gap:12px;padding:17px 20px;background:var(--p);color:#fff;border-bottom-left-radius:22px;border-bottom-right-radius:22px;margin-bottom:20px;}
+.bk{cursor:pointer;font-size:1.1rem;} .sh h2{font-size:1rem;font-weight:700;}
+.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 20px;margin-bottom:20px;}
+.sc{background:var(--card);border-radius:14px;padding:13px 8px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.05);}
+.sc .v{font-size:.98rem;font-weight:800;color:var(--p);font-family:Nunito,sans-serif;} .sc .l{font-size:.62rem;color:var(--m);margin-top:3px;}
+.tl{padding:0 20px;display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.ti{background:var(--card);border-radius:13px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.05);}
+.tt{display:flex;align-items:center;gap:12px;} .tic{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.93rem;flex-shrink:0;}
+.tic.g{background:#d1fae5;color:var(--a);} .tic.b{background:#dbeafe;color:var(--s);} .tic.r{background:#fee2e2;color:var(--d);}
+.td2{font-size:.81rem;font-weight:600;} .tdt{font-size:.67rem;color:var(--m);} .ta{font-weight:800;font-size:.9rem;font-family:Nunito,sans-serif;} .ta.cr{color:var(--a);} .ta.db{color:var(--d);}
+.fs{padding:0 20px;margin-bottom:18px;} .fc{background:var(--card);border-radius:18px;padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.07);}
+.fg2{margin-bottom:15px;} .fg2 label{display:block;font-size:.76rem;font-weight:600;color:var(--m);margin-bottom:6px;}
+.fg2 input,.fg2 select{width:100%;padding:12px 14px;border:1.5px solid var(--b);border-radius:11px;font-size:.86rem;font-family:Poppins,sans-serif;outline:none;background:#fafafa;}
+.chs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.ch{padding:6px 13px;border-radius:20px;border:1.5px solid var(--b);background:#fff;font-size:.73rem;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif;} .ch.on{background:var(--p);color:#fff;border-color:var(--p);}
+.bf{width:100%;padding:14px;border:none;border-radius:13px;background:linear-gradient(90deg,var(--p),var(--s));color:#fff;font-size:.93rem;font-weight:700;cursor:pointer;margin-top:6px;font-family:Poppins,sans-serif;}
+.ib{background:var(--bg);border-radius:12px;padding:13px;margin:12px 0;} .ir{display:flex;justify-content:space-between;padding:5px 0;font-size:.81rem;} .ir span:first-child{color:var(--m);} .ir span:last-child{font-weight:700;}
+.ug{background:var(--card);border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.07);}
+.ug h3{font-size:.98rem;font-weight:800;color:var(--p);margin-bottom:4px;} .ug p{font-size:.76rem;color:var(--m);margin-bottom:12px;}
+.ads{font-size:1.8rem;font-weight:800;color:var(--p);font-family:Nunito,sans-serif;margin:4px 0;} .tmb{display:inline-block;background:#fef3c7;color:#92400e;border-radius:20px;padding:4px 12px;font-size:.72rem;font-weight:700;margin-bottom:14px;}
+.qrw{width:180px;height:180px;margin:0 auto 14px;background:#fff;border:3px solid var(--b);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:8px;} .qrs{width:100%;height:100%;}
+.ur{background:#f0f4ff;border-radius:12px;padding:11px 14px;margin-bottom:13px;display:flex;justify-content:space-between;align-items:center;} .ur span{font-size:.85rem;font-weight:700;color:var(--p);}
+.cb{background:var(--p);color:#fff;border:none;border-radius:8px;padding:6px 11px;font-size:.72rem;font-weight:700;cursor:pointer;}
+.ua{display:flex;gap:14px;justify-content:center;margin:8px 0 14px;} .uap{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+.uap .ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--b);} .uap span{font-size:.61rem;font-weight:600;color:var(--m);}
+.cpd{width:100%;padding:13px;border:none;border-radius:12px;background:var(--a);color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif;}
+.sd2{display:flex;justify-content:center;gap:8px;margin-bottom:16px;} .dot{width:8px;height:8px;border-radius:50%;background:var(--b);} .dot.dn{background:var(--a);} .dot.ac{background:var(--p);width:22px;border-radius:4px;}
+.si{width:66px;height:66px;border-radius:50%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--a);margin:0 auto 14px;animation:pop .4s ease;}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.ih{margin:0 20px 20px;background:linear-gradient(135deg,var(--p),var(--s));border-radius:20px;padding:24px 20px;color:#fff;text-align:center;}
+.rb{background:rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;margin:13px 0;display:flex;justify-content:space-between;align-items:center;}
+.rc{font-size:1.2rem;font-weight:800;letter-spacing:3px;} .rcb{background:#fff;color:var(--p);border:none;border-radius:8px;padding:6px 12px;font-weight:700;font-size:.75rem;cursor:pointer;}
+.is2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0 20px;margin-bottom:20px;} .isc{background:var(--card);border-radius:14px;padding:15px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.05);}
+.sbs{padding:0 20px;display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.sb{padding:13px;border-radius:12px;border:none;font-size:.87rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;font-family:Poppins,sans-serif;}
+.sb.wa{background:#25D366;color:#fff;} .sb.tg{background:#0088cc;color:#fff;} .sb.cp{background:var(--p);color:#fff;}
+.phr{background:var(--p);color:#fff;padding:30px 20px 50px;text-align:center;border-bottom-left-radius:30px;border-bottom-right-radius:30px;}
+.av{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 12px;border:3px solid rgba(255,255,255,.35);}
+.pm{padding:0 20px;margin-top:-20px;} .mc{background:var(--card);border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.08);overflow:hidden;margin-bottom:14px;}
+.mi{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--b);cursor:pointer;} .mi:last-child{border-bottom:none;}
+.mic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.92rem;flex-shrink:0;}
+.mic.bl{background:#dbeafe;color:var(--s);} .mic.gr{background:#d1fae5;color:var(--a);} .mic.ye{background:#fef3c7;color:var(--a2);} .mic.re{background:#fee2e2;color:var(--d);} .mic.pu{background:#ede9fe;color:#8b5cf6;} .mic.gy{background:#f3f4f6;color:var(--m);}
+.mt2{flex:1;} .mt2 span{display:block;font-size:.84rem;font-weight:600;} .mt2 small{color:var(--m);font-size:.68rem;} .marr{color:var(--m);font-size:.76rem;}
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;justify-content:center;align-items:flex-end;} .mov.on{display:flex;}
+.mb{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:24px 20px 40px;animation:su .3s ease;max-height:90vh;overflow-y:auto;}
+@keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mtt{font-size:1rem;font-weight:800;margin-bottom:16px;color:var(--p);text-align:center;} .mcl{float:right;cursor:pointer;color:var(--m);font-size:1.1rem;background:none;border:none;margin-top:-2px;}
+.tst{position:fixed;bottom:95px;left:50%;transform:translateX(-50%) translateY(20px);background:#1f2937;color:#fff;padding:10px 22px;border-radius:30px;font-size:.81rem;font-weight:600;opacity:0;transition:.3s;z-index:400;pointer-events:none;white-space:nowrap;} .tst.on{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
-
 <body>
+<div class=app>
 
-<div class="header">
-
-<div class="top">
-<div class="profile">
-<img src="https://i.ibb.co/F3Yj0xM/user.png">
-<div>
-<h3>Abhishek</h3>
-<p>VIP User</p>
-</div>
-</div>
-
-<div>
-<h3>₹ 250</h3>
-</div>
-</div>
-
-<div class="balance-box">
-<p>Total Balance</p>
-<h1 id="balance">250</h1>
-<p>Coins</p>
-</div>
-
-</div>
-
-<div class="menu">
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
-<h3>Daily Bonus</h3>
-<p>Claim Everyday</p>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
-<h3>Watch Ads</h3>
-<p>Earn Fast</p>
+<!-- AUTH SCREEN -->
+<div id="asc">
+  <div class="ahero">
+    <div style="font-size:3rem;margin-bottom:8px;">💰</div>
+    <h1>InvestPro</h1>
+    <p>Invest Smart. Earn Daily. Withdraw Anytime.</p>
+  </div>
+  <div class="atbs">
+    <div class="atb on" id="t1" onclick="swA(0)">Login</div>
+    <div class="atb" id="t2" onclick="swA(1)">Sign Up</div>
+  </div>
+  
+  <!-- LOGIN -->
+  <div class="afm" id="fl">
+    <div class="acd">
+      <div class="fg"><label>Mobile Number</label><div class="fw"><i class="fa-solid fa-phone fi"></i><input type="tel" id="lm" placeholder="+91 Enter mobile number"></div></div>
+      <div class="fg"><label>Password</label><div class="fw"><i class="fa-solid fa-lock fi"></i><input type="password" id="lp" placeholder="Enter password"><button class="ey" onclick="tpw(this,'lp')"><i class="fa-solid fa-eye"></i></button></div></div>
+      <button class="ba" onclick="doLogin()">Login to Account</button>
+      <div class="afo">No account? <span onclick="swA(1)">Sign Up Free</span></div>
+    </div>
+  </div>
+  
+  <!-- SIGNUP -->
+  <div class="afm" id="fs" style="display:none">
+    <div class="acd">
+      <div class="fg"><label>Full Name</label><div class="fw"><i class="fa-solid fa-user fi"></i><input type="text" id="sn" placeholder="Enter full name"></div></div>
+      <div class="fg"><label>Mobile Number</label><div class="fw"><i class="fa-solid fa-phone fi"></i><input type="tel" id="sm" placeholder="+91 Mobile number"></div></div>
+      <div class="fg"><label>Password</label><div class="fw"><i class="fa-solid fa-lock fi"></i><input type="password" id="sp" placeholder="Min 6 characters"><button class="ey" onclick="tpw(this,'sp')"><i class="fa-solid fa-eye"></i></button></div></div>
+      <button class="ba" onclick="doSignup()">Create Account</button>
+      <div class="afo">Have account? <span onclick="swA(0)">Login</span></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/595/595067.png">
-<h3>Refer & Earn</h3>
-<p>Invite Friends</p>
+<!-- MAIN APP -->
+<div id="mn">
+  <!-- HOME -->
+  <div class="pg on" id="pg-home">
+    <header class="th">
+      <div class="ui"><p>Good Morning 🌸</p><h2 id="hname">User</h2></div>
+      <div class="nb"><i class="fa-solid fa-bell"></i><span class="bdg">2</span></div>
+    </header>
+    <div class="bc">
+      <div class="bl">Total Earning Balance (Withdrawable)</div>
+      <div class="bam" id="bal-display">₹ 0.00</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin:12px 0;background:rgba(255,255,255,.13);border-radius:14px;padding:12px 0;">
+        <div style="text-align:center;padding:0 10px;">
+          <div style="font-size:.68rem;opacity:.8;margin-bottom:3px;">💸 Deposit Balance</div>
+          <div style="font-size:1.05rem;font-weight:800;font-family:Nunito,sans-serif;" id="dep-display">₹ 0</div>
+        </div>
+        <div style="text-align:center;padding:0 10px;border-left:1px solid rgba(255,255,255,.25);">
+          <div style="font-size:.68rem;opacity:.8;margin-bottom:3px;">🎉 Earning Balance</div>
+          <div style="font-size:1.05rem;font-weight:800;font-family:Nunito,sans-serif;" id="earn-display">₹ 0</div>
+        </div>
+      </div>
+      <div class="cas">
+        <button class="ca dp" onclick="go('pg-rc')"><i class="fa-solid fa-wallet"></i> Add Money</button>
+        <button class="ca wt" onclick="attemptWd()"><i class="fa-solid fa-building-columns"></i> Withdraw</button>
+      </div>
+    </div>
+    <div class="ql">
+      <div class="qi" onclick="go('pg-plans-active')"><i class="fa-solid fa-chart-pie"></i>My Plans</div>
+      <div class="qi" onclick="go('pg-team')"><i class="fa-solid fa-users"></i>Team</div>
+      <div class="qi" onclick="go('pg-rec')"><i class="fa-solid fa-file-invoice-dollar"></i>Records</div>
+      <div class="qi" onclick="window.open('https://t.me/YourChannel')"><i class="fa-brands fa-telegram" style="color:#0088cc"></i>Channel</div>
+    </div>
+    
+    <div class="st">Special Offer Plans <a onclick="go('pg-prod')">View All</a></div>
+    <div class="pw">
+      <div class="pc">
+        <div class="ph"><div class="pn"><i class="fa-solid fa-crown" style="color:#f59e0b"></i> VIP Plan A</div><div class="pp">₹650</div></div>
+        <div class="pd"><div class="di"><span>Daily Income</span><span style="color:var(--a)">₹1,765</span></div><div class="di"><span>Total Income</span><span>₹7,060</span></div><div class="di"><span>Duration</span><span>4 Days</span></div></div>
+        <button class="bb" onclick="buyPlan(650,4,1765,7060,'VIP Plan A', true)">Buy Now</button>
+      </div>
+      <div class="pc" style="border-left-color:#8b5cf6">
+        <div class="ph"><div class="pn"><i class="fa-solid fa-gem" style="color:#8b5cf6"></i> Mega Plan B</div><div class="pp">₹750</div></div>
+        <div class="pd"><div class="di"><span>Daily Income</span><span style="color:var(--a)">₹2,938</span></div><div class="di"><span>Total Income</span><span>₹8,814</span></div><div class="di"><span>Duration</span><span>3 Days</span></div></div>
+        <button class="bb" style="background:linear-gradient(90deg,#5b21b6,#8b5cf6)" onclick="buyPlan(750,3,2938,8814,'Mega Plan B', true)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECHARGE PAGE -->
+  <div class="pg" id="pg-rc">
+    <div class="sh"><span class="bk" onclick="rcBack()"><i class="fa-solid fa-arrow-left"></i></span><h2>Add Money</h2></div>
+    <!-- Step 1 -->
+    <div id="s1">
+      <div class="fs"><div class="fc">
+        <div class="fg2"><label>Enter Amount (₹)</label>
+          <input type="number" id="ramt" placeholder="Minimum ₹100" oninput="updRcInfo()">
+          <div class="chs">
+            <span class="ch" onclick="sAmt(500,this)">₹500</span>
+            <span class="ch" onclick="sAmt(1000,this)">₹1,000</span>
+            <span class="ch" onclick="sAmt(2000,this)">₹2,000</span>
+            <span class="ch" onclick="sAmt(5000,this)">₹5,000</span>
+          </div>
+        </div>
+        <div class="ib">
+          <div class="ir"><span>You Will Get</span><span style="color:var(--a);font-weight:800" id="rc-get">₹0</span></div>
+        </div>
+        <button class="bf" onclick="goUPI()"><i class="fa-solid fa-qrcode"></i> Pay via UPI / QR Code</button>
+      </div></div>
+    </div>
+    
+    <!-- Step 2: UPI Gateway (Dynamic Admin UPI Connected) -->
+    <div id="s2" style="display:none">
+      <div class="fs"><div class="ug">
+        <h3>Complete Your Payment</h3>
+        <p>Scan QR code or pay via UPI ID below</p>
+        <div class="ads" id="rc-show">₹0</div>
+        
+        <div style="font-size:.72rem;color:var(--m);margin-bottom:10px">Admin UPI ID</div>
+        <div class="ur"><span id="upi-display">investpro@ybl</span><button class="cb" onclick="cpUPI()">Copy UPI</button></div>
+        
+        <div style="font-size:.77rem;font-weight:700;color:var(--t);margin-bottom:10px">Open your UPI app</div>
+        <div class="ua">
+          <div class="uap" onclick="openUPIApp('gpay')"><div class="ic" style="background:#fff;"><span style="color:#4285f4">G</span><span style="color:#ea4335">P</span></div><span>GPay</span></div>
+          <div class="uap" onclick="openUPIApp('phonepe')"><div class="ic" style="background:#5f259f;"><i class="fa-solid fa-mobile-screen-button" style="color:#fff;"></i></div><span>PhonePe</span></div>
+          <div class="uap" onclick="openUPIApp('paytm')"><div class="ic" style="background:#00baf2;"><i class="fa-solid fa-wallet" style="color:#fff;"></i></div><span>Paytm</span></div>
+        </div>
+
+        <!-- NEW: UTR INPUT FIELD FOR DATABASE -->
+        <div style="text-align:left; margin-top:15px; margin-bottom:10px;">
+          <label style="font-size:0.75rem;font-weight:700;color:var(--t);">Enter 12-Digit UTR/Ref No. after payment:</label>
+          <input type="text" id="utr_input" placeholder="e.g. 312345678901" style="width:100%;padding:12px;border:1.5px solid var(--b);border-radius:11px;font-size:0.86rem;font-family:Poppins,sans-serif;outline:none;background:#fafafa;margin-top:6px;">
+        </div>
+
+        <button class="cpd" onclick="submitRechargeRequest()"><i class="fa-solid fa-circle-check"></i> I Have Paid — Submit UTR</button>
+      </div></div>
+    </div>
+    
+    <!-- Step 3: Success -->
+    <div id="s3" style="display:none">
+      <div class="fs"><div class="fc" style="text-align:center;padding:30px 20px">
+        <div class="si"><i class="fa-solid fa-circle-check"></i></div>
+        <h3 style="font-size:1.03rem;font-weight:800;color:var(--p);margin-bottom:6px">Request Submitted!</h3>
+        <p style="font-size:.77rem;color:var(--m);margin-bottom:14px">Waiting for Admin Approval.</p>
+        <button class="bf" onclick="rcReset()">Back to Home</button>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- WITHDRAW -->
+  <div class="pg" id="pg-wd">
+    <div class="sh"><span class="bk" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></span><h2>Withdraw Funds</h2></div>
+    <div id="wd-form">
+      <div class="sr">
+        <div class="sc"><div class="v" id="wd-bal" style="color:var(--a)">₹0</div><div class="l">Earning Bal</div></div>
+        <div class="sc"><div class="v">₹500</div><div class="l">Min Withdraw</div></div>
+        <div class="sc"><div class="v">24 hrs</div><div class="l">Processing</div></div>
+      </div>
+      <div class="fs"><div class="fc">
+        <div class="fg2"><label>Withdrawal Amount (₹)</label>
+          <input type="number" id="wamt" placeholder="Minimum ₹500">
+        </div>
+        <div class="fg2"><label>Withdraw To</label>
+          <select id="wm" onchange="togWd()">
+            <option value="upi">UPI ID</option>
+            <option value="bank">Bank Account</option>
+          </select>
+        </div>
+        <div id="wupi-f" class="fg2"><label>Your UPI ID</label><input type="text" id="wupi" placeholder="yourname@ybl"></div>
+        <div id="wbank-f" style="display:none">
+          <div class="fg2"><label>Account Holder Name</label><input type="text" id="wname" placeholder="As per bank records"></div>
+          <div class="fg2"><label>Account Number</label><input type="number" id="wac" placeholder="Enter account number"></div>
+          <div class="fg2"><label>IFSC Code</label><input type="text" id="wifsc" placeholder="e.g. HDFC0001234"></div>
+        </div>
+        <button class="bf" onclick="doWd()"><i class="fa-solid fa-paper-plane"></i> Submit Withdrawal</button>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="pg" id="pg-prof">
+    <div class="phr"><div class="av"><i class="fa-solid fa-user"></i></div><h2 id="pname">User</h2><p id="pmob">+91 XXXXXXXXXX</p></div>
+    <div class="pm">
+      <div class="mc" style="margin-top:20px;">
+        <div class="mi" onclick="go('pg-rc')"><div class="mic gr"><i class="fa-solid fa-wallet"></i></div><div class="mt2"><span>Recharge Wallet</span><small>Add money via UPI QR</small></div></div>
+        <div class="mi" onclick="attemptWd()"><div class="mic ye"><i class="fa-solid fa-building-columns"></i></div><div class="mt2"><span>Withdraw Funds</span><small>Transfer to UPI or Bank</small></div></div>
+      </div>
+      <div class="mc" style="margin-bottom:20px">
+        <div class="mi" onclick="confLo()"><div class="mic re"><i class="fa-solid fa-right-from-bracket"></i></div><div class="mt2"><span>Logout</span><small>Sign out of account</small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bn">
+    <div class="ni on" onclick="navSw(this,'pg-home')"><i class="fa-solid fa-house"></i><span>Home</span></div>
+    <div class="ni" onclick="navSw(this,'pg-rc')"><i class="fa-solid fa-wallet"></i><span>Add Money</span></div>
+    <div class="ni" onclick="navSw(this,'pg-prof')"><i class="fa-solid fa-user"></i><span>Profile</span></div>
+  </nav>
 </div>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
-<h3>Withdraw</h3>
-<p>UPI Payment</p>
-</div>
-
-</div>
-
-<div class="spin-box">
-<h2>Lucky Spin</h2>
-<p>Spin & Win Coins</p>
-
-<button class="spin-btn" onclick="spin()">SPIN NOW</button>
-</div>
-
-<div class="history">
-<h2>Recent Earnings</h2>
-
-<ul id="historyList">
-<li>+20 Coins from Ads</li>
-<li>+50 Coins from Refer</li>
-<li>+10 Coins Daily Bonus</li>
-</ul>
-</div>
-
-<div class="bottom-nav">
-<a href="#">🏠<br>Home</a>
-<a href="#">💰<br>Wallet</a>
-<a href="#">🎁<br>Reward</a>
-<a href="#">👤<br>Profile</a>
-</div>
-
-<div class="overlay" id="overlay"></div>
-
-<div class="popup" id="popup">
-<h2 id="winText">You Won 10 Coins</h2>
-<button onclick="closePopup()">OK</button>
-</div>
+<!-- MODAL -->
+<div class="mov" id="mod"><div class="mb"><button class="mcl" onclick="closeMod()"><i class="fa-solid fa-xmark"></i></button><div class="mtt" id="mtt"></div><div id="mbd"></div></div></div>
+<!-- TOAST -->
+<div class="tst" id="tst"></div>
 
 <script>
+// ==========================================
+// CORE APP VARIABLES
+// ==========================================
+var APP = { user: null, depositBal: 0, earningBal: 0 };
+var ADMIN_UPI_ID = "investpro@ybl"; // Fallback, will update via API
+var phist = ['pg-home'], mainPgs = ['pg-home','pg-rc','pg-prof'];
 
-let balance = 250;
+function toast(m){ var t=document.getElementById('tst'); t.textContent=m; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');}, 2500); }
+function openMod(ti,bd){ document.getElementById('mtt').textContent=ti; document.getElementById('mbd').innerHTML=bd; document.getElementById('mod').classList.add('on'); }
+function closeMod(){ document.getElementById('mod').classList.remove('on'); }
+function fmtI(n){ return parseInt(n).toLocaleString('en-IN'); }
+function swA(i){ document.getElementById('t1').classList.toggle('on',i===0); document.getElementById('t2').classList.toggle('on',i===1); document.getElementById('fl').style.display=i===0?'block':'none'; document.getElementById('fs').style.display=i===1?'block':'none'; }
+function tpw(btn,id){ var inp=document.getElementById(id); if(inp.type==='password'){inp.type='text';btn.innerHTML='<i class="fa-solid fa-eye-slash"></i>';}else{inp.type='password';btn.innerHTML='<i class="fa-solid fa-eye"></i>';} }
 
-function spin(){
-
-let rewards = [5,10,15,20,25,50];
-let reward = rewards[Math.floor(Math.random()*rewards.length)];
-
-balance += reward;
-
-document.getElementById("balance").innerText = balance;
-
-document.getElementById("winText").innerText =
-"You Won " + reward + " Coins";
-
-document.getElementById("popup").style.display = "block";
-document.getElementById("overlay").style.display = "block";
-
-let li = document.createElement("li");
-li.innerText = "+" + reward + " Coins from Spin";
-
-document.getElementById("historyList").prepend(li);
-
+// ==========================================
+// API FETCH CONNECTIONS (SIGNUP & LOGIN)
+// ==========================================
+function doSignup(){
+    var n=document.getElementById('sn').value.trim(), m=document.getElementById('sm').value.trim(), p=document.getElementById('sp').value;
+    if(!n || m.length<10 || p.length<6){ toast('Please fill all details properly!'); return; }
+    
+    var fd = new FormData(); fd.append('name', n); fd.append('mobile', m); fd.append('password', p);
+    fetch('signup.php', { method: 'POST', body: fd }).then(r=>r.json()).then(res=>{
+        toast(res.message);
+        if(res.status === 'success') enterApp();
+    }).catch(e => toast("Error connecting to server"));
 }
 
-function closePopup(){
-document.getElementById("popup").style.display = "none";
-document.getElementById("overlay").style.display = "none";
+function doLogin(){
+    var m=document.getElementById('lm').value.trim(), p=document.getElementById('lp').value;
+    if(!m || !p){ toast('Enter mobile and password'); return; }
+    
+    var fd = new FormData(); fd.append('mobile', m); fd.append('password', p);
+    fetch('login.php', { method: 'POST', body: fd }).then(r=>r.json()).then(res=>{
+        toast(res.message);
+        if(res.status === 'success') enterApp();
+    }).catch(e => toast("Error connecting to server"));
 }
 
+function confLo(){ window.location.reload(); }
+
+// ==========================================
+// FETCH USER DATA FROM DATABASE
+// ==========================================
+function enterApp(){
+    fetch('get_data.php').then(r=>r.json()).then(res=>{
+        if(res.status === 'success') {
+            APP.user = res.user;
+            APP.depositBal = parseFloat(res.user.deposit_balance);
+            APP.earningBal = parseFloat(res.user.earning_balance);
+            ADMIN_UPI_ID = res.upi; // Set dynamic Admin UPI
+
+            document.getElementById('asc').classList.add('h');
+            document.getElementById('mn').classList.add('on');
+            
+            document.getElementById('hname').textContent = res.user.full_name;
+            document.getElementById('pname').textContent = res.user.full_name;
+            document.getElementById('pmob').textContent = res.user.mobile;
+            document.getElementById('upi-display').textContent = ADMIN_UPI_ID;
+            
+            refreshBal();
+        }
+    });
+}
+
+function refreshBal(){
+    document.getElementById('bal-display').textContent = '₹ ' + APP.earningBal.toFixed(2);
+    document.getElementById('dep-display').textContent = '₹ ' + APP.depositBal.toFixed(2);
+    document.getElementById('earn-display').textContent = '₹ ' + APP.earningBal.toFixed(2);
+    
+    if(document.getElementById('wd-bal')) document.getElementById('wd-bal').textContent = '₹' + APP.earningBal.toFixed(2);
+}
+
+// ==========================================
+// NAVIGATION SYSTEM
+// ==========================================
+function go(id){
+    document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on');});
+    document.getElementById(id).classList.add('on');
+    phist.push(id);
+    document.querySelector('.bn').style.display=mainPgs.indexOf(id)>=0?'flex':'none';
+    window.scrollTo(0,0);
+}
+function goBack(){
+    phist.pop(); var prev=phist[phist.length-1]||'pg-home';
+    document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on');});
+    document.getElementById(prev).classList.add('on');
+    document.querySelector('.bn').style.display='flex';
+}
+function navSw(el,id){
+    document.querySelectorAll('.ni').forEach(function(n){n.classList.remove('on');});
+    el.classList.add('on'); go(id); phist=[id];
+    document.querySelector('.bn').style.display='flex';
+}
+
+// ==========================================
+// RECHARGE (ADD MONEY) SYSTEM
+// ==========================================
+function sAmt(v,el){document.getElementById('ramt').value=v;document.querySelectorAll('#s1 .ch').forEach(function(c){c.classList.remove('on');});el.classList.add('on');updRcInfo();}
+function updRcInfo(){var v=parseInt(document.getElementById('ramt').value)||0;document.getElementById('rc-get').textContent='₹'+fmtI(v);}
+
+function goUPI(){
+    var amt=parseInt(document.getElementById('ramt').value)||0;
+    if(amt<100){toast('Minimum recharge is ₹100');return;}
+    document.getElementById('s1').style.display='none';
+    document.getElementById('s2').style.display='block';
+    document.getElementById('rc-show').textContent='₹ '+fmtI(amt);
+    window.scrollTo(0,0);
+}
+
+function cpUPI(){navigator.clipboard.writeText(ADMIN_UPI_ID).catch(function(){});toast('Admin UPI Copied!');}
+
+function openUPIApp(app){
+    var amt = parseInt(document.getElementById('ramt').value)||0;
+    var base='upi://pay?pa='+encodeURIComponent(ADMIN_UPI_ID)+'&pn=InvestPro&am='+amt+'&cu=INR&tn=Recharge';
+    var links={
+        gpay:'gpay://upi/pay?pa='+encodeURIComponent(ADMIN_UPI_ID)+'&pn=InvestPro&am='+amt+'&cu=INR',
+        phonepe:'phonepe://pay?pa='+encodeURIComponent(ADMIN_UPI_ID)+'&pn=InvestPro&am='+amt+'&cu=INR',
+        paytm:'paytmmp://pay?pa='+encodeURIComponent(ADMIN_UPI_ID)+'&pn=InvestPro&am='+amt+'&cu=INR',
+        bhim:base
+    };
+    try{window.location.href=links[app]||base;}catch(e){}
+    setTimeout(function(){toast('If app did not open, pay manually via UPI ID.');},2000);
+}
+
+// SEND UTR TO DATABASE (recharge.php)
+function submitRechargeRequest(){
+    var amt = parseInt(document.getElementById('ramt').value)||0;
+    var utr = document.getElementById('utr_input').value.trim();
+    if(utr.length < 12) { toast("Please enter valid 12-digit UTR/Ref No"); return; }
+    
+    var fd = new FormData(); fd.append('amount', amt); fd.append('utr', utr);
+    fetch('recharge.php', {method: 'POST', body: fd}).then(r=>r.json()).then(res=>{
+        toast(res.message);
+        if(res.status === 'success') {
+            document.getElementById('s2').style.display='none';
+            document.getElementById('s3').style.display='block';
+        }
+    });
+}
+function rcReset(){ document.getElementById('s1').style.display='block'; document.getElementById('s2').style.display='none'; document.getElementById('s3').style.display='none'; document.getElementById('ramt').value=''; go('pg-home'); }
+function rcBack(){ document.getElementById('s1').style.display='block'; document.getElementById('s2').style.display='none'; document.getElementById('s3').style.display='none'; goBack(); }
+
+// ==========================================
+// WITHDRAW SYSTEM (withdraw.php)
+// ==========================================
+function attemptWd(){ go('pg-wd'); }
+function togWd(){
+    var m = document.getElementById('wm').value;
+    document.getElementById('wupi-f').style.display=m==='upi'?'block':'none';
+    document.getElementById('wbank-f').style.display=m==='bank'?'block':'none';
+}
+
+function doWd(){
+    var amt=parseInt(document.getElementById('wamt').value)||0,m=document.getElementById('wm').value,dest='';
+    if(amt<500){toast('Minimum withdrawal is ₹500');return;}
+    if(amt>APP.earningBal){toast('Insufficient earning balance!');return;}
+    
+    if(m==='upi'){
+        dest=document.getElementById('wupi').value.trim();
+        if(!dest){toast('Enter valid UPI ID');return;}
+    } else {
+        var nm=document.getElementById('wname').value.trim(),ac=document.getElementById('wac').value.trim(),ifc=document.getElementById('wifsc').value.trim();
+        if(!nm||!ac||!ifc){toast('Fill all bank details');return;}
+        dest='Bank: '+ac+' (IFSC: '+ifc+') Name: '+nm;
+    }
+    
+    var fd = new FormData(); fd.append('amount', amt); fd.append('method', m); fd.append('details', dest);
+    fetch('withdraw.php', {method: 'POST', body: fd}).then(r=>r.json()).then(res=>{
+        if(res.status === 'success') {
+            toast(res.message);
+            APP.earningBal -= amt; 
+            refreshBal();
+            setTimeout(function(){ go('pg-home'); }, 2000);
+        } else {
+            toast(res.message);
+        }
+    });
+}
 </script>
-
 </body>
 </html>
